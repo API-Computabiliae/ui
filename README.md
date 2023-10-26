@@ -30,12 +30,3 @@ Follow the steps below to start the project locally:
    npm start
    ```
    The application will be available at http://localhost:3000.
-
-**Contributing**
-We are happy to receive contributions! To learn how to contribute, please read our [Contribution Guide](CONTRIBUTING.md).
-
-**Reporting Issues**
-If you encounter any issues or have suggestions, please open an [issue](https://github.com/your-username/project-name/issues).
-
-**License**
-This project is under the [License Name] license. Refer to the LICENSE.md file for more details.
