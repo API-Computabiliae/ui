@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.idea/
+node_modules/
+.snyk
+\.env
+
+env-access.sh
+env-docker.sh
+ssh.pem
+
+build/

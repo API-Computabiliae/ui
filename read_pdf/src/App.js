@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import Paper from '@mui/material/Paper';
+import { paperStyle, TextStyle } from './utils/utils';
+import Grid from '@mui/material/Grid';
+import Text from '@mui/material/Typography';
+import logo from './images/Logo.png';
+import axios from 'axios';
 
-function App() {
+
+function Login() {
+  useEffect(() => {
+    getPdfs();
+  }, []);
+
+  const getPdfs = async (e) => {
+    axios.get('http://localhost:8000/pdf')
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Paper sx={{ ...paperStyle }}>
+        <Grid item xs={12}>
+          <Grid container>
+            <Grid item xs={6}>
+              <img src={logo}/> 
+            </Grid>
+            <Grid item xs={6}>
+              <Text sx={{...TextStyle, color: '#526C98'}}>
+                CyberWolf.AI
+              </Text>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Paper>
+    </React.Fragment>
   );
 }
 
-export default App;
+export default Login;
