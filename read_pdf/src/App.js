@@ -3,9 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './containers/Home';
 import About from './containers/About';
 import Login from './containers/login';
+// import {useDispatch, useSelector} from "react-redux";
 
  
-function App() {
+export default function App() {
+
+  // const logged = useSelector(state => state.AuthReducer.isAdmin);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -16,5 +20,3 @@ function App() {
     </BrowserRouter>
   );
 }
- 
-export default App;
