@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Text from '@mui/material/Typography';
 import logo from '../images/Logo.png';
 import axios from 'axios';
+import MenuTab from '../components/Menu';
 
 
 function Home() {
@@ -24,20 +25,7 @@ function Home() {
 
   return (
     <React.Fragment>
-      <Paper sx={{ ...paperStyle }}>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={6}>
-              <img src={logo}/> 
-            </Grid>
-            <Grid item xs={6}>
-              <Text sx={{...TextStyle, color: '#526C98'}}>
-                Carlos Lindo
-              </Text>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Paper>
+      <MenuTab />
     </React.Fragment>
   );
 }
