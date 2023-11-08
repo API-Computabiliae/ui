@@ -1,9 +1,4 @@
 import React, { useEffect } from 'react';
-import Paper from '@mui/material/Paper';
-import { paperStyle, TextStyle } from '../utils/utils'
-import Grid from '@mui/material/Grid';
-import Text from '@mui/material/Typography';
-import logo from '../images/Logo.png';
 import axios from 'axios';
 import MenuTab from '../components/Menu';
 
