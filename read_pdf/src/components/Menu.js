@@ -12,10 +12,12 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Arquivos Salvos', 'Sobre'];
+const settings = ['Perfil','Home','Sair'];
+
 
 function MenuTab() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -35,31 +37,33 @@ function MenuTab() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  
+  
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{backgroundColor:'#0F1724'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}} />
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              mr: 10,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#8BB2F0',
               textDecoration: 'none',
             }}
           >
             CyberWolf.AI
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -112,7 +116,7 @@ function MenuTab() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            CyberWolf.AI
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -129,7 +133,8 @@ function MenuTab() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+               {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
+               <AccountCircleIcon sx={{color:'white', fontSize: 40}}/>
               </IconButton>
             </Tooltip>
             <Menu
