@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import MenuTab from '../components/Menu';
 import { Grid, Paper, Typography } from '@mui/material';
 import { paperStyle } from '../utils/utils';

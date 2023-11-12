@@ -4,6 +4,9 @@ import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import axios from 'axios';
 import { Grid } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -18,10 +21,26 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export default function UploadFile(props) {
     const {dataFile, setDataFile} = props;
     const [isDragOver, setIsDragOver] = useState(false);
-    
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+      };
+  
+    const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+        return;
+    }
+
+    setOpen(false);
+    };
 
     const handleDragEnter = (e) => {
         e.preventDefault();
@@ -57,6 +76,7 @@ export default function UploadFile(props) {
             })
             .catch(error => {
                 console.log(error);
+                handleClick();
             });
     };
 
@@ -100,6 +120,13 @@ export default function UploadFile(props) {
                 onChange={handleFileChange}
             />
         </Button>
+        <Stack spacing={2} sx={{ width: '100%' }}>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+              Impossivel ler esse arquivo!
+            </Alert>
+          </Snackbar>
+      </Stack>
     </React.Fragment>
   );
 }

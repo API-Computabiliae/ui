@@ -5,7 +5,8 @@ import Grid from '@mui/material/Grid';
 import { paperStyle } from '../utils/utils';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import GroupIcon from '@mui/icons-material/Group';
-import leo from '../images/leo.jpg';
+import leo from '../images/Leo.jpg';
+import carlos from '../images/Carlos.jpeg';
 
 
 function About() {
@@ -206,31 +207,31 @@ function About() {
                       Leonardo de Alcantara
                   </Typography>
                 </Grid>
-                <Grid container justifyContent="start" alignItems="center">
+                <Grid container justifyContent="start" alignItems="center" sx={{marginTop: "10px"}}>
                   <Avatar alt="Remy Sharp" src={leo} sx={{marginRight: 5}}/>
                   <Typography variant="subtitle" gutterBottom>
                       Athos Willian
                   </Typography>
                 </Grid>
-                <Grid container justifyContent="start" alignItems="center">
-                  <Avatar alt="Remy Sharp" src={leo} sx={{marginRight: 5}}/>
+                <Grid container justifyContent="start" alignItems="center" sx={{marginTop: "10px"}}>
+                  <Avatar alt="Remy Sharp" src={carlos} sx={{marginRight: 5}}/>
                   <Typography variant="subtitle" gutterBottom>
                       Carlos Lessa
                   </Typography>
                 </Grid>
-                <Grid container justifyContent="start" alignItems="center">
+                <Grid container justifyContent="start" alignItems="center" sx={{marginTop: "10px"}}>
                   <Avatar alt="Remy Sharp" src={leo} sx={{marginRight: 5}}/>
                   <Typography variant="subtitle" gutterBottom>
                       Rayssa Paiva
                   </Typography>
                 </Grid>
-                <Grid container justifyContent="start" alignItems="center">
+                <Grid container justifyContent="start" alignItems="center" sx={{marginTop: "10px"}}>
                   <Avatar alt="Remy Sharp" src={leo} sx={{marginRight: 5}}/>
                   <Typography variant="subtitle" gutterBottom>
                       Victor Emanuel
                   </Typography>
                 </Grid>
-                <Grid container justifyContent="start" alignItems="center">
+                <Grid container justifyContent="start" alignItems="center" sx={{marginTop: "10px"}}>
                   <Avatar alt="Remy Sharp" src={leo} sx={{marginRight: 5}}/>
                   <Typography variant="subtitle" gutterBottom>
                       Thallys Xavier

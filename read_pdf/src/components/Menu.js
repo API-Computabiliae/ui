@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../images/Logo.png';
 
 
-const pages = ['Arquivos Salvos', 'Sobre'];
+const pages = ['Chat', 'Sobre'];
 const settings = ['Perfil','Sair'];
 
 
@@ -27,6 +27,8 @@ function MenuTab() {
   const handleMenuItemClick = (page) => {
     if (page == "Sobre"){
       navigate('/about');
+    } else if (page == "Chat"){
+      navigate('/chat');
     }
   };
 
