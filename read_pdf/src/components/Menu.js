@@ -7,21 +7,30 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useNavigate } from 'react-router-dom';
+import logo from '../images/Logo.png';
 
 
-const pages = ['Arquivos Salvos', 'Sobre'];
-const settings = ['Perfil','Home','Sair'];
+const pages = ['Chat', 'Sobre'];
+const settings = ['Perfil','Sair'];
 
 
 function MenuTab() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
+
+  const handleMenuItemClick = (page) => {
+    if (page == "Sobre"){
+      navigate('/about');
+    } else if (page == "Chat"){
+      navigate('/chat');
+    }
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -37,19 +46,17 @@ function MenuTab() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  
-  
 
   return (
-    <AppBar position="static" sx={{backgroundColor:'#0F1724'}}>
+    <AppBar position="static" sx={{backgroundColor:'#1A1919', position: 'fixed', top: 0, width: '100%'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}} />
+          <img src={logo} alt="logo" style={{width: '50px', height: '50px', display: { xs: 'none', md: 'flex' }, mr: 2, borderRadius: "50%"}}/>
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 10,
               display: { xs: 'none', md: 'flex' },
@@ -58,6 +65,7 @@ function MenuTab() {
               letterSpacing: '.3rem',
               color: '#8BB2F0',
               textDecoration: 'none',
+              marginLeft: '10px'
             }}
           >
             CyberWolf.AI
@@ -93,18 +101,17 @@ function MenuTab() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => handleMenuItemClick(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -122,7 +129,7 @@ function MenuTab() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleMenuItemClick(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
@@ -133,7 +140,6 @@ function MenuTab() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-               {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                <AccountCircleIcon sx={{color:'white', fontSize: 40}}/>
               </IconButton>
             </Tooltip>
