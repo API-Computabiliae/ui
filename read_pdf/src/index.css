@@ -12,7 +12,6 @@ body {
 }
 
 .chatInfo {
-  height: 50px;
   border-radius: 10px 0 10px 0;
   background-color: #5d5b8d;
   justify-content: space-between;
