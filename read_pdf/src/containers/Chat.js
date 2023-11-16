@@ -18,8 +18,26 @@ function Chat() {
 
     const handleSendMessage = () => {
         if (inputMessage.trim() !== '') {
-            setMessages([...messages, { text: inputMessage, sender: 'user' }]);
-            setInputMessage('');
+            //setMessages([...messages, { text: inputMessage, sender: 'user' }]);
+            setMessages((prevMessages) => [...prevMessages, { text: inputMessage, sender: 'user' }]);
+            console.log(inputMessage);
+            //setInputMessage('');
+            
+            const question = async (message) => {           
+                axios.post('http://localhost:8000/question', {
+                    message: message,
+                    name: fileName
+                }).then((response) => {
+                    console.log(response);
+                    //setMessages([...messages, { text: response.data, sender: 'api' }]);
+                    setMessages((prevMessages) => [...prevMessages, { text: response.data, sender: 'api' }]);
+                    console.log(response.data.message);
+                })
+                .catch((err) => {
+                    console.log("NÃO SEI O QUE HOUVE" + err);
+                });
+            };
+
             question(inputMessage);
         // Adicione aqui a lógica para processar a mensagem ou enviá-la para o backend, se necessário.
         }
@@ -40,7 +58,7 @@ function Chat() {
         });
     };
 
-    const question = async (message) => {           
+    /*const question = async (message) => {           
         axios.post('http://localhost:8000/question', {
             message: message,
             name: fileName
@@ -48,9 +66,9 @@ function Chat() {
             console.log(response);
         })
         .catch((err) => {
-            console.log(err);
+            console.log("NÃO SEI O QUE HOUVE" + err);
         });
-    };
+    };*/
         
     return (
         <React.Fragment>
@@ -98,9 +116,9 @@ function Chat() {
                                     </Grid>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Grid container justifyContent="start">
+                                    <Grid container justifyContent="start" style={{display: 'block', alignItems: 'center'}}>
                                         {messages.map((msg, index) => (
-                                            <div key={index} style={{ marginBottom: '10px', textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
+                                            <div class='chatInfo' key={index} style={{ marginBottom: '10px', backgroundColor: '#5d5b8d', textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
                                                 {msg.text}
                                             </div>
                                         ))}

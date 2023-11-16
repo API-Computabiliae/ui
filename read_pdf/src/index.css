@@ -10,3 +10,12 @@ body {
   font-family: Arial, sans-serif;
   color: #fff;
 }
+
+.chatInfo {
+  height: 50px;
+  border-radius: 10px 0 10px 0;
+  background-color: #5d5b8d;
+  justify-content: space-between;
+  padding: 10px;
+  color: lightgray;  
+}
