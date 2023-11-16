@@ -13,15 +13,26 @@ function Chat() {
 
     useEffect(() => {
         getFiles();
-        // question();
     }, []);
 
     const handleSendMessage = () => {
         if (inputMessage.trim() !== '') {
-            setMessages([...messages, { text: inputMessage, sender: 'user' }]);
-            setInputMessage('');
+            setMessages((prevMessages) => [...prevMessages, { text: inputMessage, sender: 'user' }]);
+            console.log(inputMessage);
+            
+            const question = async (message) => {           
+                axios.post('http://localhost:8000/question', {
+                    message: message,
+                    name: fileName
+                }).then((response) => {
+                    setMessages((prevMessages) => [...prevMessages, { text: response.data, sender: 'api' }]);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            };
+
             question(inputMessage);
-        // Adicione aqui a lógica para processar a mensagem ou enviá-la para o backend, se necessário.
         }
     };
 
@@ -39,19 +50,7 @@ function Chat() {
             console.log(err);
         });
     };
-
-    const question = async (message) => {           
-        axios.post('http://localhost:8000/question', {
-            message: message,
-            name: fileName
-        }).then((response) => {
-            console.log(response);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    };
-        
+   
     return (
         <React.Fragment>
             <MenuTab />
@@ -98,16 +97,16 @@ function Chat() {
                                     </Grid>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Grid container justifyContent="start">
+                                    <Grid container justifyContent="start" style={{display: 'block', alignItems: 'center'}}>
                                         {messages.map((msg, index) => (
-                                            <div key={index} style={{ marginBottom: '10px', textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
+                                            <div class='chatInfo' key={index} style={{ marginBottom: '10px', backgroundColor: msg.sender === 'user' ? '#364257' : '#2E3239', textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
                                                 {msg.text}
                                             </div>
                                         ))}
                                     </Grid>
                                 </Grid>
                                 {/* Input e botão para enviar mensagens */}
-                                <Grid container spacing={2} alignItems="center">
+                                <Grid container spacing={2} alignItems="center" style={{display: 'flex', alignContent: 'center', marginTop: '10px'}}>
                                     <Grid item xs={9}>
                                         <TextField
                                             fullWidth
@@ -121,6 +120,7 @@ function Chat() {
                                             InputLabelProps={{
                                                 sx: { color: 'white' },
                                             }}
+                                            style={{}}
                                         />
                                     </Grid>
                                     <Grid item xs={3}>
